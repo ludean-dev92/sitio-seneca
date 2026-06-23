@@ -85,7 +85,7 @@ a {
 }
 
 /* ==========================================================================
-   2. COMPONENTES REUTILIZABLES (Botones, Carruseles, Botón Top)
+   2. COMPONENTES REUTILIZABLES (Botones, Carruseles, Modal Galería, Botón Top)
    ========================================================================== */
 .btn { 
     display: inline-flex;
@@ -135,6 +135,50 @@ a {
 .card-carousel-btn:hover { background: var(--denim); color: var(--blanco); transform: translateY(-50%) scale(1.08); }
 .card-carousel-btn.prev { left: 15px; }
 .card-carousel-btn.next { right: 15px; }
+
+/* Lightbox Modal de la Galería */
+.g-modal {
+    display: none; 
+    position: fixed; 
+    z-index: 9999; 
+    padding-top: 60px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(7, 43, 116, 0.95); 
+    backdrop-filter: blur(5px);
+}
+.g-modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 800px;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    animation-name: zoomIn;
+    animation-duration: 0.3s;
+}
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; } 
+    to { transform: scale(1); opacity: 1; }
+}
+.g-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: var(--blanco);
+    font-size: 40px;
+    font-weight: bold;
+    transition: var(--transicion);
+    cursor: pointer;
+}
+.g-close:hover {
+    color: var(--celeste-vivido);
+}
 
 /* Botón Ir Arriba (Scroll-to-top) */
 #btn-back-to-top {
@@ -206,7 +250,7 @@ header { background: var(--blanco); box-shadow: 0 2px 15px rgba(7,27,116,0.04); 
 .nav-menu a:hover::after, .nav-menu a.active::after { width: 100%; }
 .nav-menu a:hover, .nav-menu .active { color: var(--denim); }
 
-/* --- NUEVO HERO FULLSCREEN (Vídeo Completo) --- */
+/* --- HERO FULLSCREEN (Vídeo Completo) --- */
 .hero-fullscreen {
     position: relative;
     width: 100%;
@@ -353,4 +397,26 @@ footer { background: var(--azul-oscuro); color: var(--blanco); padding: 60px 0 2
         z-index: 999;
     }
     .nav-menu.active { display: flex; }
+
+    /* Ajustes específicos de desborde responsivo para el correo electrónico en la lista de contacto */
+    .info-list li div {
+        min-width: 0;
+        flex: 1;
+    }
+    .info-list li a[href^="mailto:"] {
+        display: block;
+        word-break: break-all;
+        overflow-wrap: break-word;
+    }
+
+    /* Ajuste responsivo para el Lightbox de la galería en dispositivos móviles */
+    .g-modal-content {
+        width: 100%;
+        padding: 0 10px;
+    }
+    .g-close {
+        top: 15px;
+        right: 20px;
+        font-size: 35px;
+    }
 }
