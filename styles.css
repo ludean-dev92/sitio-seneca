@@ -796,32 +796,12 @@ img, video {
 }
 
 /* ==========================================================================
-   --- ADMISIONES Y CONTACTO EMBAJADOR (100% PALETA & TIPOGRAFÍA GLOBAL) ---
+   --- NUEVA SECCIÓN ADMISIONES (ESTILO LIMPIO CON IMAGEN CIRCULAR) ---
    ========================================================================== */
 .admisiones-section {
-    padding: 140px 0;
-    overflow: hidden;
+    padding: 100px 0;
     position: relative;
-    background: var(--azul-oscuro, #072b74); /* Respaldo seguro */
-}
-
-/* Imagen de fondo integrada con blur sin romper contenedores */
-.admisiones-section::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url('assets/imagenes/destacadas/DJI_20260522212604_0150_D.JPG'); /* Usando una de tus imágenes de campus */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: blur(10px) brightness(0.35); /* Desenfoque cinemático */
-    transform: scale(1.06); /* Elimina artefactos blancos en los bordes */
-    z-index: 1;
-}
-
-.admisiones-section .container {
-    position: relative;
-    z-index: 2;
+    background: var(--azul-oscuro, #072b74);
 }
 
 .contacto-grid {
@@ -831,16 +811,15 @@ img, video {
     align-items: center;
 }
 
-/* --- BLOQUE IZQUIERDO: INTEGRACIÓN TIPOGRÁFICA --- */
-.contacto-card-wrapper:not(.split-space) {
+/* --- BLOQUE IZQUIERDO --- */
+.contacto-card-wrapper {
     background: transparent;
     box-shadow: none;
-    padding: 0 20px 0 0;
     border: none;
 }
 
-.contacto-card-wrapper:not(.split-space) .contacto-block-title {
-    font-family: inherit; /* Usa la fuente global del encabezado de tu sitio */
+.contacto-card-wrapper .contacto-block-title {
+    font-family: inherit;
     font-size: 2.8rem;
     color: var(--blanco, #ffffff);
     font-weight: 700;
@@ -848,15 +827,14 @@ img, video {
     line-height: 1.2;
 }
 
-.contacto-card-wrapper:not(.split-space) .contacto-block-desc {
-    font-family: inherit; /* Mantiene la consistencia con tu texto base */
+.contacto-card-wrapper .contacto-block-desc {
+    font-family: inherit;
     font-size: 1.15rem;
     color: var(--gris-claro, #e2e8f0);
     line-height: 1.7;
     margin-bottom: 35px;
 }
 
-/* Lista de Requisitos con viñetas personalizadas de tu paleta */
 .info-list {
     list-style: none;
     padding: 0;
@@ -875,9 +853,8 @@ img, video {
 .info-list li::before {
     content: '→';
     position: absolute;
-    left: 0;
-    top: 0;
-    color: var(--celeste-vivido, #38bdf8); /* Tu acento celeste para guiar la vista */
+    left: 0; top: 0;
+    color: var(--celeste-vivido, #38bdf8);
     font-weight: 700;
 }
 
@@ -894,12 +871,11 @@ img, video {
     border-color: var(--oro-premium, #fdba74);
 }
 
-/* Botón de WhatsApp con el estilo de tu marca */
 .btn-whatsapp-premium {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    background: #25D366; /* Verde institucional WhatsApp */
+    background: #25D366;
     color: #ffffff;
     padding: 16px 32px;
     border-radius: 8px;
@@ -912,76 +888,65 @@ img, video {
 .btn-whatsapp-premium:hover {
     background: #128C7E;
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
 }
 
-
-/* --- COMPORTAMIENTO DE LA TARJETA DERECHA (FORZADO) --- */
-.contacto-card-wrapper.split-space {
-    background: var(--blanco, #ffffff) !important;
-    padding: 0 !important; 
-    border-radius: 16px !important;
-    border: none !important;
-    box-shadow: 0 20px 40px -1px rgba(7, 43, 116, 0.12) !important; 
-    position: relative !important;
-    z-index: 5 !important;
-    overflow: hidden !important; 
-    min-height: 440px !important; 
-    display: block !important; /* Cambiado a block para evitar fallos de flex */
-    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+/* --- BLOQUE DERECHO: CONTENEDOR DEL CÍRCULO PREMIUM --- */
+.admisiones-media-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* 1. LA CARÁTULA (Obligada a estar arriba de todo) */
-.contacto-cover {
-    position: absolute !important;
-    top: 0 !important; 
-    left: 0 !important; 
-    width: 100% !important; 
-    height: 100% !important;
-    background: linear-gradient(135deg, #ffffff 0%, #eef2ff 100%) !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    z-index: 99 !important; /* Número altísimo para obligarla a tapar lo de abajo */
-    gap: 20px !important;
-    padding: 40px !important;
-    text-align: center !important;
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-}
-
-.contacto-cover .cover-icon-shell {
-    width: 100px; height: 100px;
-    background: var(--azul-vivido, #072b74);
-    color: #ffffff;
+/* El marco del círculo usa un borde sutil basado en tu color Oro o Celeste */
+.circle-image-frame {
+    width: 380px;
+    height: 380px;
     border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 2.5rem;
-    box-shadow: 0 10px 25px rgba(7, 43, 116, 0.2);
+    padding: 12px; /* Espacio para el efecto de doble anillo */
+    border: 2px dashed var(--oro-premium, #fdba74); /* Anillo exterior elegante */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transicion-premium, all 0.5s ease);
 }
 
-/* 2. EL CONTENIDO REAL (Abajo esperando) */
-.contacto-real-content {
-    padding: 55px 45px !important;
-    width: 100% !important;
-    height: 100% !important;
-    box-sizing: border-box !important;
+.student-circle-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Evita que la foto de los alumnos se deforme */
+    border-radius: 50%;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    transition: var(--transicion-premium, all 0.5s ease);
 }
 
-/* --- ACCIÓN DEL HOVER (EL DESPLAZAMIENTO) --- */
-/* Cuando pasas el mouse por la tarjeta, la carátula SE DISPARA HACIA ARRIBA */
-.contacto-card-wrapper.split-space:hover .contacto-cover {
-    opacity: 0 !important;
-    transform: translateY(-100%) !important; /* Se va hacia arriba del contenedor */
+/* Microinteracción elegante: Al pasar el mouse, el anillo gira suavemente */
+.circle-image-frame:hover {
+    transform: rotate(15deg) scale(1.02);
+    border-color: var(--celeste-vivido, #38bdf8);
 }
 
-.contacto-card-wrapper.split-space:hover {
-    transform: scale(1.04) translateY(-5px) !important;
-    box-shadow: 0 35px 60px -5px rgba(7, 43, 116, 0.22) !important; 
+.circle-image-frame:hover .student-circle-img {
+    transform: rotate(-15deg); /* Contrarresta el giro para que los alumnos no se tuerzan */
 }
 
+/* Adaptación para pantallas móviles */
+@media (max-width: 768px) {
+    .contacto-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    .circle-image-frame {
+        width: 280px;
+        height: 280px;
+    }
+    .info-list li {
+        padding-left: 0;
+    }
+    .info-list li::before {
+        display: none;
+    }
+}
 /* ==========================================================================
    --- TRANSPARENCIA LEGAL: ANIMADA Y PREMIUM ---
    ========================================================================== */
@@ -1183,7 +1148,7 @@ img, video {
     z-index: 1;
 }
 
-.footer-grid { display: grid; grid-template-columns: 1.2fr 0.8fr 1fr; gap: 60px; margin-bottom: 60px; }
+.footer-grid { display: grid; grid-template-columns: 1.2fr 0.8fr 1fr; gap: 60px; margin-bottom: 40px; }
 
 .footer-block-title { font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px; color: var(--blanco); margin-bottom: 25px; position: relative; }
 .footer-about-text { color: var(--bridal-blue); line-height: 1.6; margin-bottom: 25px; }
@@ -1194,16 +1159,132 @@ img, video {
 
 .footer-links-list { list-style: none; }
 .footer-links-list li { margin-bottom: 15px; }
-.footer-links-list a { color: var(--bridal-blue); }
+.footer-links-list a { color: var(--bridal-blue); transition: var(--transicion-premium); }
 .footer-links-list a:hover { color: var(--celeste-vivido); padding-left: 5px; }
 
 .footer-map-layout { display: flex; flex-direction: column; gap: 15px; height: 100%; }
 .footer-address-text { color: var(--bridal-blue); }
 .footer-map { width: 100%; height: 160px; background: #eee; border: none; filter: grayscale(0.5); }
 
-.footer-bottom-bar { border-top: 1px solid rgba(255,255,255,0.15); padding-top: 30px; display: flex; justify-content: space-between; color: var(--celeste-vivido); font-size: 0.8rem; }
+
+/* ==========================================================================
+   --- NUEVA SECCIÓN DE CONTACTO MINIMALISTA (BOLITA Y PALITO) ---
+   ========================================================================== */
+.footer-contacto-minimalist {
+    width: 100%;
+    padding: 35px 0;
+    /* Palitos divisores horizontales transparentes sobre la foto de fondo */
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    margin: 20px 0 40px 0;
+}
+
+.footer-contacto-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.contacto-line-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* La Bolita (Círculo de línea fina) */
+.contacto-line-item .line-dot {
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: var(--blanco);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    transition: var(--transicion-premium);
+}
+
+.line-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.line-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--celeste-vivido); /* Combina con tu diseño institucional */
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.line-values {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.line-values a, 
+.line-values .static-text {
+    color: var(--bridal-blue); /* Usa tu color secundario suave */
+    text-decoration: none;
+    transition: var(--transicion-premium);
+}
+
+/* El Palito divisor vertical entre teléfonos */
+.line-divider {
+    color: rgba(255, 255, 255, 0.2);
+    font-weight: 300;
+}
+
+/* Microinteracciones de la bolita y el enlace */
+.contacto-line-item:hover .line-dot {
+    border-color: var(--blanco);
+    color: var(--celeste-vivido);
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.line-values a:hover {
+    color: var(--blanco);
+    text-decoration: underline;
+}
+
+
+/* ==========================================================================
+   BARRA INFERIOR DE CRÉDITOS
+   ========================================================================== */
+.footer-bottom-bar { 
+    padding-top: 10px; 
+    display: flex; 
+    justify-content: space-between; 
+    color: var(--celeste-vivido); 
+    font-size: 0.8rem; 
+}
 .footer-legal-link { color: var(--celeste-vivido); text-decoration: underline; }
 
+/* Adaptación para pantallas móviles */
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .footer-contacto-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+    }
+    .footer-bottom-bar {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
 /* ==========================================================================
    7. RESPONSIVIDAD EXTREMA (Media Queries de Máxima Estabilidad)
    ========================================================================== */
