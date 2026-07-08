@@ -28,6 +28,11 @@
     box-sizing: border-box; 
 }
 
+/* Clase personalizada para usar la tipografía Rubik */
+.fuente-rubik {
+    font-family: 'Rubik', sans-serif;
+}
+
 html {
     scroll-behavior: smooth;
     text-rendering: optimizeLegibility;
@@ -60,6 +65,11 @@ a {
     text-decoration: none; 
     color: inherit; 
     transition: var(--transicion-premium); 
+}
+
+p {
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 img, video {
@@ -751,6 +761,7 @@ img, video {
     color: var(--denim);
     text-transform: uppercase;
     letter-spacing: 1px;
+    text-align: center;
 }
 /* --- MOSAICO GALERÍA PREMIUM --- */
 #galeria {
